@@ -14,6 +14,13 @@
 *.sublime-workspace
 
 # IDE - VSCode
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -21,13 +28,19 @@
 !.vscode/extensions.json
 .history/*
 
-
 #System Files
 .DS_Store
 Thumbs.db
 
+# Tests
+/coverage
+/.nyc_output
 
 #log files
+logs
+*.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*

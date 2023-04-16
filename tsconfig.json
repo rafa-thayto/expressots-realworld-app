@@ -11,16 +11,16 @@
         "sourceMap": true,
         "outDir": "./dist",
         "rootDir": "./",
-        "baseUrl": "src",
+        "baseUrl": "./",
         "paths": {
             "@application/*": [
-                "application/*"
+                "src/application/*"
             ],
             "@domain/*": [
-                "domain/*"
+                "src/domain/*"
             ],
             "@infra/*": [
-                "infra/*"
+                "src/infra/*"
             ]
         },
         "esModuleInterop": true,
@@ -35,12 +35,15 @@
         ]
     },
     "include": [
+        ".",
         "src/**/*.ts",
         ".eslintrc.js"
     ],
     "exclude": [
         "node_modules",
+        "tsconfig-paths-bootstrap.js",
         "dist",
+        "jest.config.ts",
         "test/**/*"
     ]
 }

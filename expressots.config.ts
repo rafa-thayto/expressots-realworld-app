@@ -1,9 +1,9 @@
-import { ExpressoConfig, Pattern } from "@expressots/core";
+import { ExpressoConfig, Pattern } from '@expressots/core'
 
 const config: ExpressoConfig = {
-    sourceRoot: "src",
+    sourceRoot: 'src',
     scaffoldPattern: Pattern.KEBAB_CASE,
-	opinionated: false
-};
+    opinionated: false,
+}
 
-export default config;
+export default config

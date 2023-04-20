@@ -6,7 +6,7 @@ import { container } from '@infra/containers/app-container'
 
 export async function bootstrap() {
   const app = App.create(container)
-  app.listen(5000, ServerEnvironment.Development)
+  app.listen(8080, ServerEnvironment.Development)
 }
 
 bootstrap()

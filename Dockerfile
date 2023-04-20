@@ -37,5 +37,5 @@ USER expressots
 
 EXPOSE 5000
 
-CMD ["npm", "start:prod"]
+CMD ["npm", "run", "start:prod"]
 # ENTRYPOINT ["sh", "entrypoint.sh"] 

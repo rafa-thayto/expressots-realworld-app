@@ -1,11 +1,16 @@
-interface ICreateUserRequestDTO {
-    username: string
-    email: string
-    password: string
+import { User } from '@entities/user.entity'
+import type { AppError } from '@shared/types/app-error'
+
+interface CreateUserRequestDTO {
+    user: Pick<User, 'email' | 'username' | 'password'>
 }
 
-interface ICreateUserResponseDTO {
-    status: string;
-}
+type CreateUserResponseDTO =
+    | {
+        status: number
+    }
+    | ({
+        status: number
+    } & AppError<{ meta?: Record<string, unknown> }>)
 
-export { ICreateUserRequestDTO, ICreateUserResponseDTO };
+export { CreateUserRequestDTO, CreateUserResponseDTO }

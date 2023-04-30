@@ -6,15 +6,19 @@ import { User } from '@entities/index'
 @provide(UserRepository)
 class UserRepository implements IBaseRepository<User> {
   async create(item: User): Promise<User> {
-    const createdUser = await prismaClient().user.create({
-      data: {
-        username: item.username,
-        password: item.password,
-        email: item.email,
-      },
-    })
+    try {
+      const createdUser = await prismaClient().user.create({
+        data: {
+          username: item.username,
+          password: item.password,
+          email: item.email,
+        },
+      })
 
-    return createdUser as User
+      return createdUser as User
+    } catch (error) {
+      throw error
+    }
   }
 
   update(item: User) {

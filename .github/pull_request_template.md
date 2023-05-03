@@ -4,6 +4,6 @@
 
 ## Requirements
 
-[] Unit tests
-[] Integration tests
-[] Lint
+[ ] Unit tests
+[ ] Integration tests
+[ ] Lint

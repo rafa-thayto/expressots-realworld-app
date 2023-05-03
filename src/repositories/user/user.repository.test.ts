@@ -1,9 +1,10 @@
 import { UserRepository } from './user.repository'
+import { User } from '@entities/index'
 import { PrismaClient } from '@prisma/client'
-import prismaMock from '../../../client'
-import
+import { faker } from '@faker-js/faker'
 
-const mockedPrismaClient = mocked
+const mockedPrismaClient = jest.mocked(PrismaClient)
+
 describe('[UserRepository]', () => {
   let repository: UserRepository
 
@@ -11,21 +12,28 @@ describe('[UserRepository]', () => {
     repository = new UserRepository()
   })
 
-  it('create user', () => {
-    const user = {
-      id: 1,
-      name: 'Rich',
-      email: 'hello@prisma.io',
-      acceptTermsAndConditions: true,
+  describe('Create User', () => {
+    const user: User = {
+      username: faker.internet.userName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
     }
 
-    prismaMock.user.create.mockResolvedValue(user)
+    mockedPrismaClient.mockReturnValueOnce({
+      user: {
+        create: jest
+          .fn()
+          .mockResolvedValueOnce(user)
+          .mockRejectedValue(new Error()),
+      },
+    } as any)
 
-    await expect(createUser(user)).resolves.toEqual({
-      id: 1,
-      name: 'Rich',
-      email: 'hello@prisma.io',
-      acceptTermsAndConditions: true,
+    it('with success', async () => {
+      await expect(repository.create(user)).resolves.toEqual(user)
+    })
+
+    it('with error', async () => {
+      await expect(repository.create(user)).rejects.toEqual(new Error())
     })
   })
 })

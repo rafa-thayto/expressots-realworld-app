@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { PingUseCase } from "@useCases/ping/ping.usecase";
+import { PingUseCase } from "./ping.usecase";
 
 describe("PingUseCase", () => {
     let pingUseCase: PingUseCase;

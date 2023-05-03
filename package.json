@@ -12,6 +12,7 @@
         "prod": "node -r dotenv/config -r ./dist/register-path.js ./dist/src/main.js",
         "test": "jest",
         "test:watch": "jest --watchAll",
+        "test:ci": "npm run test:cov --passWithNoTests --ci",
         "test:cov": "jest --coverage",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix"

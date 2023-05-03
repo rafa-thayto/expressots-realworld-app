@@ -18,6 +18,8 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
+      - run: pnpm i --frozen-lockfile
+
       - run: npm run lint
 
       - run: npm run test:cov

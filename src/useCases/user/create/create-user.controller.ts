@@ -19,7 +19,6 @@ class CreateUserController extends BaseController {
         @requestBody() data: CreateUserRequestDTO,
         @response() res: any,
     ): Promise<CreateUserResponseDTO> {
-        console.log('data', data)
         return this.callUseCaseAsync(
             this.createUserUseCase.execute(data),
             res,

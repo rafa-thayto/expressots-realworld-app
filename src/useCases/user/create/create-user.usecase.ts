@@ -1,8 +1,7 @@
-import { AppError, Report, StatusCode } from '@expressots/core'
+import { StatusCode } from '@expressots/core'
 import { provide } from 'inversify-binding-decorators'
 import { CreateUserRequestDTO, CreateUserResponseDTO } from './create-user.dto'
 import { UserRepository } from '@repositories/user/user.repository'
-// import { User } from '@entities/user.entity'
 import { genSaltSync, hashSync } from 'bcrypt'
 import { Prisma } from '@prisma/client'
 
@@ -21,38 +20,12 @@ class CreateUserUseCase {
                 username: data.user.username,
             })
 
-            console.log('||||||||||||||||||||||||||||||||||')
-
-            // const user: User | null = null
-            //
-            // if (!user) {
-            //     Report.Error(
-            //         new AppError(
-            //             StatusCode.BadRequest,
-            //             'User already exists',
-            //             'create-user-usecase',
-            //         ),
-            //     )
-            // }
-
             const response: CreateUserResponseDTO = {
                 status: StatusCode.OK,
             }
             return response
         } catch (error) {
-            console.log(
-                'error',
-                error instanceof Prisma.PrismaClientKnownRequestError,
-            )
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
-                // Report.Error(
-                //     new AppError(
-                //         StatusCode.UnprocessableEntity,
-                //         'User already exists',
-                //         'create-user-usecase',
-                //     ),
-                // )
-
                 const meta = error.meta
                 const response: CreateUserResponseDTO = {
                     status: StatusCode.UnprocessableEntity,

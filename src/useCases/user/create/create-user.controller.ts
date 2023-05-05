@@ -5,13 +5,10 @@ import {
     requestBody,
     response,
 } from 'inversify-express-utils'
-import {
-    ICreateUserRequestDTO,
-    ICreateUserResponseDTO,
-} from './create-user.dto'
+import { CreateUserRequestDTO, CreateUserResponseDTO } from './create-user.dto'
 import { CreateUserUseCase } from './create-user.usecase'
 
-@controller('/api/users')
+@controller('/users')
 class CreateUserController extends BaseController {
     constructor(private createUserUseCase: CreateUserUseCase) {
         super('create-user-controller')
@@ -19,10 +16,10 @@ class CreateUserController extends BaseController {
 
     @httpPost('/')
     execute(
-        @requestBody() data: ICreateUserRequestDTO,
+        @requestBody() data: CreateUserRequestDTO,
         @response() res: any,
-    ): ICreateUserResponseDTO {
-        return this.callUseCase(
+    ): Promise<CreateUserResponseDTO> {
+        return this.callUseCaseAsync(
             this.createUserUseCase.execute(data),
             res,
             StatusCode.Created,

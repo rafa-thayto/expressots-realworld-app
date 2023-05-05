@@ -26,6 +26,9 @@
       "@repositories/*": [
         "repositories/*"
       ],
+      "@shared/*": [
+        "shared/*"
+      ],
       "@useCases/*": [
         "useCases/*"
       ]

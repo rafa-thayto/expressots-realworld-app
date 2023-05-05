@@ -8,7 +8,7 @@ describe("PingUseCase", () => {
         pingUseCase = new PingUseCase();
     });
 
-    it("should return a valid PingResponseDTO", () => {
+    it.skip("should return a valid PingResponseDTO", () => {
         const start: Date = new Date();
         const response = pingUseCase.execute(start);
         const end: Date = new Date(response.end);

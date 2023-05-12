@@ -1,10 +1,10 @@
+import { User } from '@prisma/client'
 import { prismaClient } from '@providers/prisma/prisma.provider'
+import { BaseRepository } from '@repositories/base-repository'
 import { provide } from 'inversify-binding-decorators'
-import { IBaseRepository } from '../base-repository.interface'
-import { User } from '@entities/index'
 
 @provide(UserRepository)
-class UserRepository implements IBaseRepository<User> {
+class UserRepository extends BaseRepository<User> {
   async create(item: User): Promise<User> {
     const createdUser = await prismaClient().user.create({
       data: {
@@ -14,23 +14,19 @@ class UserRepository implements IBaseRepository<User> {
       },
     })
 
-    return createdUser as User
+    return createdUser
   }
 
-  update(item: User) {
-    return item
-  }
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await prismaClient().user.findUnique({
+      where: {
+        email,
+      },
+    })
 
-  delete(id: string): boolean {
-    return false
-  }
+    console.log('user', user)
 
-  find(id: string): User | null {
-    return new User()
-  }
-
-  findAll(): User[] {
-    return [new User(), new User()]
+    return user
   }
 }
 

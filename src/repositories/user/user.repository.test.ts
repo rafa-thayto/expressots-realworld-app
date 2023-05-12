@@ -1,6 +1,5 @@
 import { UserRepository } from './user.repository'
-import { User } from '@entities/index'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, User } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 
 const mockedPrismaClient = jest.mocked(PrismaClient)
@@ -14,6 +13,9 @@ describe('[UserRepository]', () => {
 
   describe('Create User', () => {
     const user: User = {
+      id: 1,
+      image: null,
+      bio: null,
       username: faker.internet.userName(),
       email: faker.internet.email(),
       password: faker.internet.password(),

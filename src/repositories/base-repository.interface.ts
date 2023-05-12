@@ -1,8 +1,8 @@
 interface IBaseRepository<T> {
-    create(item: T): Promise<T> | T | null
-    update(item: T): Promise<T> | T | null
-    delete(id: string): boolean
-    find(id: string): Promise<T> | T | null
+    create(item: T): Promise<T | null>
+    update(item: T): Promise<T | null>
+    delete(id: string): Promise<boolean>
+    findById(id: string): Promise<T | null>
     findAll(): Promise<T[]> | T[]
 }
 

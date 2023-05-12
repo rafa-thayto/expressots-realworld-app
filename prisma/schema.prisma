@@ -61,6 +61,7 @@ model User {
   email    String    @unique
   username String
   password String
+  token    String?
   image    String?
   bio      String?
   Article  Article[]

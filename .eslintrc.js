@@ -1,7 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: ['plugin:@typescript-eslint/recommended'],
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
   root: true,
   env: {
     node: true,
@@ -16,15 +16,15 @@ module.exports = {
     'no-trailing-spaces': ['error', { skipBlankLines: true }],
     // 'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     // 'no-multi-spaces': 'off',
-    // 'prettier/prettier': [
-    //   'error',
-    //   {
-    //     semi: false,
-    //     singleQuote: true,
-    //     endOfLine: 'auto',
-    //     tabWidth: 2,
-    //   },
-    // ],
+    'prettier/prettier': [
+      'error',
+      {
+        semi: false,
+        singleQuote: true,
+        endOfLine: 'auto',
+        tabWidth: 2,
+      },
+    ],
     // 'prettier/prettier': ['error', { endOfLine: 'auto' }, { tabWidth: 2 }],
   },
 }

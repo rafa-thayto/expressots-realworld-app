@@ -7,7 +7,6 @@ import { verifyJwtToken } from '@shared/auth/jwt'
 import {
   JsonWebTokenError,
   TokenExpiredError,
-  VerifyErrors,
 } from 'jsonwebtoken'
 
 @provide(GetCurrentUserUseCase)
